@@ -1,12 +1,12 @@
 # ![nf-core/tower-action](img/nfcore-toweraction_logo.png)
 
-**A GitHub Action to launch a workflow using Nextflow Tower.**
+**A GitHub Action to launch a workflow using [Nextflow Tower](https://tower.nf) - <https://tower.nf>.**
 
 ## Example usage
 
 ### Minimal example
 
-This runs the current GitHub repository pieline on Nextflow Tower at the current commit hash when pushed to the `dev` branch. The workflow runs on the user's personal workspace.
+This runs the current GitHub repository pieline on [Nextflow Tower](https://tower.nf) at the current commit hash when pushed to the `dev` branch. The workflow runs on the user's personal workspace.
 
 ```yaml
 on:

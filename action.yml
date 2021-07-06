@@ -1,7 +1,7 @@
-name: Launch a workflow using Nextflow Tower
+name: tower-action
 author: Phil Ewels
 
-description: Launch a workflow on Nextflow Tower
+description: Launch a workflow using Nextflow Tower (https://tower.nf)
 
 branding:
   icon: 'play'
