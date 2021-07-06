@@ -8,30 +8,30 @@ branding:
   color: 'purple'
 
 inputs:
-  workspace_id:
-    description: Nextflow Tower workspace ID
-    required: true
   bearer_token:
     description: Nextflow Tower bearer token
     required: true
+  workspace_id:
+    description: Nextflow Tower workspace ID
+    required: false
   compute_env:
     description: Nextflow Tower compute env
-    required: true
+    required: false
   pipeline:
     description: Pipeline repository
     required: true
   revision:
     description: Pipeline revision (release / branch)
-    required: true
+    required: false
   workdir:
     description: Nextflow work directory
     required: true
   parameters:
     description: Pipeline parameters
-    required: true
+    required: false
   profiles:
     description: Nextflow config profiles
-    required: true
+    required: false
 
 runs:
   using: 'docker'
@@ -43,5 +43,5 @@ runs:
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
-    PARAMS_STRING: ${{ toJson(fromJson(inputs.parameters)) }}
-    PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}
+    PARAMETERS: ${{ toJson(fromJson(inputs.parameters)) }}
+    CONFIG_PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}

@@ -68,11 +68,9 @@ jobs:
 **[Required]** Pipeline parameters.
 
 Should be a JSON object, quoted as a string in your GitHub Actions workflow.
-Must all be on a single line.
 
 ### `profiles`
 
 **[Required]** Nextflow config profiles.
 
 Should be a JSON list of strings, quoted in your GitHub Actions workflow.
-Must all be on a single line.

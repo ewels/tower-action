@@ -2,16 +2,21 @@
 
 set -e
 
-PARAMS_ESCAPED=`echo $PARAMS_STRING | sed 's/"/\\\"/g'`
+# Escape double quotes in the params
+PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
+
+# Optional payload
+$COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
+$PARAMS=${PARAMETERS:+'"paramsText": "'$PARAMS_ESCAPED'",'}
+$REV=${REVISION:+'"revision": "'$REVISION'",'}
+$PROFILES=${CONFIG_PROFILES:+'"configProfiles": "'$CONFIG_PROFILES'",'}
+
 PAYLOAD='
 {
     "launch": {
-        "computeEnvId": "'${TOWER_COMPUTE_ENV}'",
         "pipeline": "'${PIPELINE}'",
         "workDir": "'${WORKDIR}'",
-        "paramsText": "'${PARAMS_ESCAPED}'",
-        "revision": "'${REVISION}'",
-        "configProfiles": '${PROFILES}',
+        '${COMPUTE}${PARAMS}${REV}${PROFILES}'
         "resume": false
     }
 }'
