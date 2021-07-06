@@ -5,7 +5,7 @@ GitHub Action to launch Nextflow Tower.
 ## Example usage
 
 ```yaml
-name: Run pipeline using Nextflow Tower
+name: Launch on Tower
 
 # Manually trigger the action with a button in GitHub
 # Alternatively, trigger on release / push etc.
@@ -19,8 +19,7 @@ jobs:
     if: github.repository == 'username/repo'
     runs-on: ubuntu-latest
     steps:
-      - name: Launch workflow via tower
-        uses: ewels/tower-action
+      - uses: ewels/tower-action@master
         # Use repository secrets for sensitive fields
         with:
           workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}

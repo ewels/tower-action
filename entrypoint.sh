@@ -2,7 +2,7 @@
 
 set -e
 
-sh -c << CurlCommand
+sh -c << CurlCommand \
     curl \
         --silent \
         --show-error \
