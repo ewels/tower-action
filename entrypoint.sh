@@ -6,12 +6,12 @@ PAYLOAD='{"launch": {"computeEnvId": "'${TOWER_COMPUTE_ENV}'","pipeline": "'${PI
 
 echo $PAYLOAD
 
-curl
-    --silent
-    --show-error
-    --fail
-    -X POST "https://api.tower.nf/workflow/launch?workspaceId=${TOWER_WORKSPACE_ID}"
-    -H "Accept: application/json"
-    -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}"
-    -H "Content-Type: application/json"
+curl \
+    --silent \
+    --show-error \
+    --fail \
+    -X POST "https://api.tower.nf/workflow/launch?workspaceId=${TOWER_WORKSPACE_ID}" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}" \
+    -H "Content-Type: application/json" \
     -d $PAYLOAD
