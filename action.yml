@@ -47,5 +47,5 @@ runs:
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
     PARAMETERS: ${{ inputs.params_string }}
-    PARAMS_STRING: ${{ toJson(fromJson(inputs.parameters)) }}
+    PARAMS_STRING: ${{ fromJson(inputs.parameters) }}
     PROFILES: ${{ inputs.profiles }}
