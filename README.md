@@ -1,6 +1,6 @@
-# tower-action
+# ![nf-core/tower-action](img/nfcore-toweraction_logo.png)
 
-GitHub Action to launch Nextflow Tower.
+**A GitHub Action to launch a workflow using Nextflow Tower.**
 
 ## Example usage
 
@@ -136,3 +136,17 @@ Default: An empty JSON object (`{}`).
 Pipeline config profiles to use (eg. `-profile test`). Should be a JSON array of strings, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
 
 Default: An empty JSON array (`[]`).
+
+## Credits
+
+This GitHub Action was written by Phil Ewels ([@ewels](https://github.com/ewels)), with help from and based on earlier work by Gisela Gabernet ([@ggabernet](https://github.com/ggabernet)).
+
+## Citation
+
+If you use `nf-core/tower-action` in your work, please cite the `nf-core` publication as follows:
+
+> **The nf-core framework for community-curated bioinformatics pipelines.**
+>
+> Philip Ewels, Alexander Peltzer, Sven Fillinger, Harshil Patel, Johannes Alneberg, Andreas Wilm, Maxime Ulysse Garcia, Paolo Di Tommaso & Sven Nahnsen.
+>
+> _Nat Biotechnol._ 2020 Feb 13. doi: [10.1038/s41587-020-0439-x](https://dx.doi.org/10.1038/s41587-020-0439-x).
