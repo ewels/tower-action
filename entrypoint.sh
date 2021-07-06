@@ -6,7 +6,7 @@ set -e
 PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
 
 # Optional payload
-WORKSPACE=${TOWER_WORKSPACE_ID:+'workspaceId='TOWER_WORKSPACE_ID}
+WORKSPACE=${TOWER_WORKSPACE_ID:+'workspaceId='$TOWER_WORKSPACE_ID}
 COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
 REV=${REVISION:+'"revision": "'$REVISION'",'}
 
