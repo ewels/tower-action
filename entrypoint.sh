@@ -15,7 +15,7 @@ PAYLOAD='
     }
 }'
 
-echo $PAYLOAD
+echo "$PAYLOAD"
 
 curl \
     --silent \
@@ -25,4 +25,4 @@ curl \
     -H "Accept: application/json" \
     -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}" \
     -H "Content-Type: application/json" \
-    -d $PAYLOAD
+    -d "$PAYLOAD"
