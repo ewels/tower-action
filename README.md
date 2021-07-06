@@ -4,7 +4,9 @@ GitHub Action to launch Nextflow Tower.
 
 ## Example usage
 
-A minimal example:
+### Minimal example
+
+This runs the current GitHub repository pieline on Nextflow Tower at the current commit hash when pushed to the `dev` branch. The workflow runs on the user's personal workspace.
 
 ```yaml
 on:
@@ -23,7 +25,11 @@ jobs:
           workdir: ${{ secrets.AWS_S3_BUCKET }}
 ```
 
-A complete example:
+### Complete example
+
+This example never runs automatically, but creates a button under the GitHub repository _Actions_ tab that can be used to manually trigger the workflow.
+
+It runs on a specified organisation workspace, calls an external pipeline to be run at a pinned versiont tag. The `--outdir` parameter is used to save results to a separate directory in the AWS bucket and the pipeline uses two config profiles.
 
 ```yaml
 name: Launch on Tower
