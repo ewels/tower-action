@@ -25,6 +25,12 @@ echo "---"
 
 echo $PARAMS_STRING
 
+echo "---"
+
+PARAMS_STRING_ESCAPED=sed 's/"/\\"/g' $PARAMS_STRING
+echo $PARAMS_STRING_ESCAPED
+
+
 curl \
     --silent \
     --show-error \
