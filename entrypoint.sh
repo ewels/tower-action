@@ -22,6 +22,7 @@ PAYLOAD='
     }
 }'
 
+echo $WORKSPACE
 echo $PAYLOAD
 
 curl \
