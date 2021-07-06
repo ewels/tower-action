@@ -43,5 +43,5 @@ runs:
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
-    PARAMETERS: ${{ toJSON(inputs.parameters) }}
-    PROFILES: ${{ toJSON(inputs.profiles) }}
+    PARAMETERS: ${{ inputs.parameters }}
+    PROFILES: ${{ inputs.profiles }}
