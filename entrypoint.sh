@@ -17,6 +17,14 @@ PAYLOAD='
 
 echo "$PAYLOAD"
 
+echo "---"
+
+echo $PARAMETERS
+
+echo "---"
+
+echo $PARAMS_STRING
+
 curl \
     --silent \
     --show-error \
