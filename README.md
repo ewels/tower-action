@@ -28,9 +28,12 @@ jobs:
           pipeline: ${{ github.repository }}
           revision: ${{ github.sha }}
           workdir: ${{ secrets.AWS_S3_BUCKET }}/work/${{ github.sha }}
-          # Set any custom pipeline params here - JSON object as single-line string
-          parameters: '{ outdir: ${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }} }'
-          # List of config profiles to use - JSON list as single-line string
+          # Set any custom pipeline params here - JSON object as a string
+          parameters: |
+            {
+                "outdir": "${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}"
+            }
+          # List of config profiles to use - JSON array as a string
           profiles: '[ "test", "aws_tower" ]'
 ```
 

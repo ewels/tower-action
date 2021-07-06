@@ -2,34 +2,19 @@
 
 set -e
 
+PARAMS_ESCAPED=`echo $PARAMS_STRING | sed 's/"/\\\"/g'`
 PAYLOAD='
 {
     "launch": {
         "computeEnvId": "'${TOWER_COMPUTE_ENV}'",
         "pipeline": "'${PIPELINE}'",
         "workDir": "'${WORKDIR}'",
-        "paramsText": "'${PARAMETERS}'",
+        "paramsText": "'${PARAMS_ESCAPED}'",
         "revision": "'${REVISION}'",
         "configProfiles": '${PROFILES}',
         "resume": false
     }
 }'
-
-echo "$PAYLOAD"
-
-echo "---"
-
-echo $PARAMETERS
-
-echo "---"
-
-echo $PARAMS_STRING
-
-echo "---"
-
-PARAMS_STRING_ESCAPED=`echo $PARAMS_STRING | sed 's/"/\\\"/g'`
-echo $PARAMS_STRING_ESCAPED
-
 
 curl \
     --silent \

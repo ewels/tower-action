@@ -48,4 +48,4 @@ runs:
     WORKDIR: ${{ inputs.workdir }}
     PARAMETERS: ${{ inputs.parameters }}
     PARAMS_STRING: ${{ toJson(fromJson(inputs.params_string)) }}
-    PROFILES: ${{ inputs.profiles }}
+    PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}
