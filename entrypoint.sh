@@ -2,7 +2,7 @@
 
 set -e
 
-$PAYLOAD='{"launch": {"computeEnvId": "'${TOWER_COMPUTE_ENV}'","pipeline": "'${PIPELINE}'","workDir": "'${WORKDIR}'","paramsText": "'${PARAMETERS}'","revision": "'${REVISION}'","configProfiles": '${PROFILES}',"resume": false}}'
+PAYLOAD='{"launch": {"computeEnvId": "'${TOWER_COMPUTE_ENV}'","pipeline": "'${PIPELINE}'","workDir": "'${WORKDIR}'","paramsText": "'${PARAMETERS}'","revision": "'${REVISION}'","configProfiles": '${PROFILES}',"resume": false}}'
 
 echo $PAYLOAD
 
