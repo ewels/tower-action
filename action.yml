@@ -28,9 +28,11 @@ inputs:
     required: true
   parameters:
     description: Pipeline parameters
+    default: '{}'
     required: false
   profiles:
     description: Nextflow config profiles
+    default: '[]'
     required: false
 
 runs:

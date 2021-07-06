@@ -8,16 +8,16 @@ PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
 # Optional payload
 WORKSPACE=${TOWER_WORKSPACE_ID:+'workspaceId='TOWER_WORKSPACE_ID}
 COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
-PARAMS=${PARAMETERS:+'"paramsText": "'$PARAMS_ESCAPED'",'}
 REV=${REVISION:+'"revision": "'$REVISION'",'}
-PROFILES=${CONFIG_PROFILES:+'"configProfiles": '$CONFIG_PROFILES','}
 
 PAYLOAD='
 {
     "launch": {
         "pipeline": "'${PIPELINE}'",
         "workDir": "'${WORKDIR}'",
-        '${COMPUTE}${PARAMS}${REV}${PROFILES}'
+        '${COMPUTE}${REV}'
+        "paramsText": "'$PARAMS_ESCAPED'",
+        "configProfiles": '$CONFIG_PROFILES',
         "resume": false
     }
 }'
