@@ -6,10 +6,10 @@ set -e
 PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
 
 # Optional payload
-$COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
-$PARAMS=${PARAMETERS:+'"paramsText": "'$PARAMS_ESCAPED'",'}
-$REV=${REVISION:+'"revision": "'$REVISION'",'}
-$PROFILES=${CONFIG_PROFILES:+'"configProfiles": "'$CONFIG_PROFILES'",'}
+COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
+PARAMS=${PARAMETERS:+'"paramsText": "'$PARAMS_ESCAPED'",'}
+REV=${REVISION:+'"revision": "'$REVISION'",'}
+PROFILES=${CONFIG_PROFILES:+'"configProfiles": "'$CONFIG_PROFILES'",'}
 
 PAYLOAD='
 {
