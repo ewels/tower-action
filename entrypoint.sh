@@ -6,6 +6,7 @@ set -e
 PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
 
 # Optional payload
+WORKSPACE=${TOWER_WORKSPACE_ID:+'workspaceId='TOWER_WORKSPACE_ID}
 COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
 PARAMS=${PARAMETERS:+'"paramsText": "'$PARAMS_ESCAPED'",'}
 REV=${REVISION:+'"revision": "'$REVISION'",'}
@@ -27,7 +28,7 @@ curl \
     --silent \
     --show-error \
     --fail \
-    -X POST "https://api.tower.nf/workflow/launch?workspaceId=${TOWER_WORKSPACE_ID}" \
+    -X POST "https://api.tower.nf/workflow/launch?${WORKSPACE}" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}" \
     -H "Content-Type: application/json" \
