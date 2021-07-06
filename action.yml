@@ -11,17 +11,19 @@ inputs:
   bearer_token:
     description: Nextflow Tower bearer token
     required: true
+  compute_env:
+    description: Nextflow Tower compute env
+    required: true
   workspace_id:
     description: Nextflow Tower workspace ID
     required: false
-  compute_env:
-    description: Nextflow Tower compute env
-    required: false
   pipeline:
     description: Pipeline repository
-    required: true
+    default: github.repository
+    required: false
   revision:
     description: Pipeline revision (release / branch)
+    default: github.sha
     required: false
   workdir:
     description: Nextflow work directory

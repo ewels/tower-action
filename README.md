@@ -4,6 +4,27 @@ GitHub Action to launch Nextflow Tower.
 
 ## Example usage
 
+A minimal example:
+
+```yaml
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  run-tower:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ewels/tower-action@master
+        # Use repository secrets for sensitive fields
+        with:
+          bearer_token: ${{ secrets.TOWER_BEARER_TOKEN }}
+          compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
+          workdir: ${{ secrets.AWS_S3_BUCKET }}
+```
+
+A complete example:
+
 ```yaml
 name: Launch on Tower
 
@@ -25,8 +46,8 @@ jobs:
           workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}
           bearer_token: ${{ secrets.TOWER_BEARER_TOKEN }}
           compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
-          pipeline: ${{ github.repository }}
-          revision: ${{ github.sha }}
+          pipeline: YOUR_USERNAME/REPO
+          revision: v1.2.1
           workdir: ${{ secrets.AWS_S3_BUCKET }}/work/${{ github.sha }}
           # Set any custom pipeline params here - JSON object as a string
           parameters: |
@@ -39,38 +60,73 @@ jobs:
 
 ## Inputs
 
-### `workspace_id`
-
-**[Required]** Nextflow Tower workspace ID.
+Please note that a number of these inputs are sensitive and should be kept secure. We recommend saving them as appropriate using GitHub repository [encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets). They can then be accessed with `${{ secrets.SECRET_NAME }}` in your GitHub actions workflow.
 
 ### `bearer_token`
 
-**[Required]** Nextflow Tower bearer token.
+**[Required]** Nextflow Tower personal access token.
+
+Visit <https://tower.nf/tokens> to generate a new access token.
+
+See the [Nextflow Tower documentation for more details](https://help.tower.nf/getting-started/usage/#via-nextflow-run-command):
+
+![workspace ID](img/usage_create_token.png)
+![workspace ID](img/usage_name_token.png)
+![workspace ID](img/usage_token.png)
+
+### `workspace_id`
+
+**[Optional]** Nextflow Tower workspace ID.
+
+Nextflow Tower organisations can have multiple _Workspaces_. Use this field to choose a specific workspace.
+
+If not set, the pipeline will launch on your personal user's workspace.
+
+Your Workspace ID can be found in the organisation's _Workspaces_ tab:
+
+![workspace ID](img/workspace_id.png)
 
 ### `compute_env`
 
-**[Required]** Nextflow Tower compute env.
+**[Required]** Nextflow Tower compute environment ID.
+
+![workspace ID](img/compute_id.png)
 
 ### `pipeline`
 
-**[Required]** Pipeline repository.
+**[Optional]** Pipeline repository name.
+
+For example, `nf-core/rnaseq` or `https://github.com/nf-core/sarek`
+
+Default: The current GitHub repository (`github.repository`).
 
 ### `revision`
 
-**[Required]** Pipeline revision (release / branch).
+**[Optional]** Pipeline revision.
+
+A pipeline release tag, branch or commit hash.
+
+Default: The current GitHub commit hash (`github.sha`).
 
 ### `workdir`
 
 **[Required]** Nextflow work directory.
 
+The location that temporary working files should be stored. Must be accessible in the Nextflow Tower compute environment used.
+
 ### `parameters`
 
-**[Required]** Pipeline parameters.
+**[Optional]** Pipeline parameters.
 
-Should be a JSON object, quoted as a string in your GitHub Actions workflow.
+Additional pipeline parameters (eg. `--myparam` or `params.myparam`).
+These should be supplied as a valid JSON object, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
+
+Default: An empty JSON object (`{}`).
 
 ### `profiles`
 
-**[Required]** Nextflow config profiles.
+**[Optional]** Nextflow config profiles.
 
-Should be a JSON list of strings, quoted in your GitHub Actions workflow.
+Pipeline config profiles to use (eg. `-profile test`). Should be a JSON array of strings, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
+
+Default: An empty JSON array (`[]`).
