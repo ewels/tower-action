@@ -15,8 +15,8 @@ on:
 jobs:
   run-tower:
     name: Launch on Nextflow Tower
-    # Don't run on forked repos
-    if: github.repository == 'username/repo'
+    # Don't try to run on forked repos
+    if: github.repository == 'YOUR_USERNAME/REPO'
     runs-on: ubuntu-latest
     steps:
       - uses: ewels/tower-action@master
@@ -28,13 +28,10 @@ jobs:
           pipeline: ${{ github.repository }}
           revision: ${{ github.sha }}
           workdir: ${{ secrets.AWS_S3_BUCKET }}/work/${{ github.sha }}
-          # Set any custom pipeline params here - JSON object as string
-          parameters: |
-            {
-                outdir: ${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}
-            }
-          # List of config profiles to use - JSON list as string
-          profiles: "[ test, aws_tower ]"
+          # Set any custom pipeline params here - JSON object as single-line string
+          parameters: '{ outdir: ${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }} }'
+          # List of config profiles to use - JSON list as single-line string
+          profiles: '[ "test", "aws_tower" ]'
 ```
 
 ## Inputs
@@ -68,9 +65,11 @@ jobs:
 **[Required]** Pipeline parameters.
 
 Should be a JSON object, quoted as a string in your GitHub Actions workflow.
+Must all be on a single line.
 
 ### `profiles`
 
 **[Required]** Nextflow config profiles.
 
 Should be a JSON list of strings, quoted in your GitHub Actions workflow.
+Must all be on a single line.
