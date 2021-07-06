@@ -21,6 +21,8 @@ PAYLOAD='
     }
 }'
 
+echo $PAYLOAD
+
 curl \
     --silent \
     --show-error \
