@@ -29,13 +29,13 @@ jobs:
           pipeline: ${{ github.repository }}
           revision: ${{ github.sha }}
           workdir: ${{ secrets.AWS_S3_BUCKET }}/work/${{ github.sha }}
-          # Set any custom pipeline params here
-          parameters:
-            outdir: ${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}
-          # List of config profiles to use
-          profiles:
-            - test
-            - aws_tower
+          # Set any custom pipeline params here - JSON object as string
+          parameters: |
+            {
+                outdir: ${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}
+            }
+          # List of config profiles to use - JSON list as string
+          profiles: "[ test, aws_tower ]"
 ```
 
 ## Inputs
@@ -66,8 +66,12 @@ jobs:
 
 ### `parameters`
 
-**[Required]** Pipeline parameters. Write as YAML within the GitHub Actions workflow.
+**[Required]** Pipeline parameters.
+
+Should be a JSON object, quoted as a string in your GitHub Actions workflow.
 
 ### `profiles`
 
-**[Required]** Nextflow config profiles. YAML list of strings.
+**[Required]** Nextflow config profiles.
+
+Should be a JSON list of strings, quoted in your GitHub Actions workflow.
