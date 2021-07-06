@@ -27,7 +27,7 @@ echo $PARAMS_STRING
 
 echo "---"
 
-PARAMS_STRING_ESCAPED=`sed 's/"/\\"/g' $PARAMS_STRING`
+PARAMS_STRING_ESCAPED=`echo $PARAMS_STRING | sed 's/"/\\\"/g'`
 echo $PARAMS_STRING_ESCAPED
 
 
