@@ -29,9 +29,6 @@ inputs:
   parameters:
     description: Pipeline parameters
     required: true
-  params_string:
-    description: Pipeline parameters string
-    required: true
   profiles:
     description: Nextflow config profiles
     required: true
@@ -46,6 +43,5 @@ runs:
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
-    PARAMETERS: ${{ inputs.parameters }}
-    PARAMS_STRING: ${{ toJson(fromJson(inputs.params_string)) }}
+    PARAMS_STRING: ${{ toJson(fromJson(inputs.parameters)) }}
     PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}
