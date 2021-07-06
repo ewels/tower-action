@@ -1,0 +1,47 @@
+name: Launch a workflow using Nextflow Tower
+author: Phil Ewels
+
+description: Launch a workflow on Nextflow Tower
+
+branding:
+  icon: 'play'
+  color: 'purple'
+
+inputs:
+  workspace_id:
+    description: Nextflow Tower workspace ID
+    required: true
+  bearer_token:
+    description: Nextflow Tower bearer token
+    required: true
+  compute_env:
+    description: Nextflow Tower compute env
+    required: true
+  pipeline:
+    description: Pipeline repository
+    required: true
+  revision:
+    description: Pipeline revision (release / branch)
+    required: true
+  workdir:
+    description: Nextflow work directory
+    required: true
+  parameters:
+    description: Pipeline parameters
+    required: true
+  profiles:
+    description: Nextflow config profiles
+    required: true
+
+runs:
+  using: 'docker'
+  image: Dockerfile
+  env:
+    TOWER_WORKSPACE_ID: ${{ inputs.workspace_id }}
+    TOWER_BEARER_TOKEN: ${{ inputs.bearer_token }}
+    TOWER_COMPUTE_ENV: ${{ inputs.compute_env }}
+    PIPELINE: ${{ inputs.pipeline }}
+    REVISION: ${{ inputs.revision }}
+    WORKDIR: ${{ inputs.workdir }}
+    PARAMETERS: ${{ toJSON(inputs.parameters) }}
+    PROFILES: ${{ toJSON(inputs.profiles) }}
