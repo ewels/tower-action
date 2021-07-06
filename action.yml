@@ -19,11 +19,11 @@ inputs:
     required: false
   pipeline:
     description: Pipeline repository
-    default: github.repository
+    default: ${{ github.repository }}
     required: false
   revision:
     description: Pipeline revision (release / branch)
-    default: github.sha
+    default: ${{ github.sha }}
     required: false
   workdir:
     description: Nextflow work directory
