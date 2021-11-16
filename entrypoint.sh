@@ -2,31 +2,23 @@
 
 set -e
 
-# Escape double quotes in the params
-PARAMS_ESCAPED=`echo $PARAMETERS | sed 's/"/\\\"/g'`
-
-# Optional payload
-WORKSPACE=${TOWER_WORKSPACE_ID:+'workspaceId='$TOWER_WORKSPACE_ID}
-COMPUTE=${TOWER_COMPUTE_ENV:+'"computeEnvId": "'$TOWER_COMPUTE_ENV'",'}
-REV=${REVISION:+'"revision": "'$REVISION'",'}
-
-PAYLOAD='
-{
-    "launch": {
-        "pipeline": "'${PIPELINE}'",
-        "workDir": "'${WORKDIR}'",
-        '${COMPUTE}${REV}'
-        "paramsText": "'$PARAMS_ESCAPED'",
-        "configProfiles": '$CONFIG_PROFILES',
-        "resume": false
-    }
-}'
+PAYLOAD=$(
+    jq -n \
+        --arg pipeline "$PIPELINE" \
+        --arg workDir "$WORKDIR" \
+        ${TOWER_COMPUTE_ENV:+--arg computeEnvId "$TOWER_COMPUTE_ENV"} \
+        ${REVISION:+--arg revision "$REVISION"} \
+        --arg paramsText "$PARAMETERS" \
+        --arg configProfiles "$CONFIG_PROFILES" \
+        --argjson resume false \
+        '{ launch: $ARGS.named }'
+)
 
 curl \
     --silent \
     --show-error \
     --fail \
-    -X POST "https://api.tower.nf/workflow/launch?${WORKSPACE}" \
+    -X POST "https://api.tower.nf/workflow/launch?${TOWER_WORKSPACE_ID:+'workspaceId='$TOWER_WORKSPACE_ID}" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}" \
     -H "Content-Type: application/json" \
