@@ -17,7 +17,7 @@ jobs:
   run-tower:
     runs-on: ubuntu-latest
     steps:
-      - uses: ewels/tower-action@master
+      - uses: nf-core/tower-action@master
         # Use repository secrets for sensitive fields
         with:
           bearer_token: ${{ secrets.TOWER_BEARER_TOKEN }}
@@ -46,7 +46,7 @@ jobs:
     if: github.repository == 'YOUR_USERNAME/REPO'
     runs-on: ubuntu-latest
     steps:
-      - uses: ewels/tower-action@master
+      - uses: nf-core/tower-action@master
         # Use repository secrets for sensitive fields
         with:
           workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}
