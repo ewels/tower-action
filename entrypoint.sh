@@ -17,6 +17,7 @@ PAYLOAD=$(
 curl \
     --silent \
     --show-error \
+    --dump-headers - \
     --fail-with-body \
     -X POST 'https://api.tower.nf/workflow/launch?'${TOWER_WORKSPACE_ID:+workspaceId="$TOWER_WORKSPACE_ID"} \
     -H "Accept: application/json" \
