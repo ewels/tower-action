@@ -18,7 +18,7 @@ curl \
     --silent \
     --show-error \
     --fail \
-    -X POST "https://api.tower.nf/workflow/launch?${TOWER_WORKSPACE_ID:+'workspaceId='$TOWER_WORKSPACE_ID}" \
+    -X POST 'https://api.tower.nf/workflow/launch?'${TOWER_WORKSPACE_ID:+workspaceId="$TOWER_WORKSPACE_ID"} \
     -H "Accept: application/json" \
     -H "Authorization: Bearer ${TOWER_BEARER_TOKEN}" \
     -H "Content-Type: application/json" \
