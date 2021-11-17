@@ -9,7 +9,7 @@ echo $PARAMETERS > params.json
 # Launch the pipeline
 tw launch $PIPELINE \
     --params=params.json \
-    ${$WORKDIR:+"--work-dir=$WORKDIR"} \
+    ${WORKDIR:+"--work-dir=$WORKDIR"} \
     ${TOWER_COMPUTE_ENV:+"--compute-env=$TOWER_COMPUTE_ENV"} \
     ${REVISION:+"--revision=$REVISION"} \
     ${CONFIG_PROFILES:+"--profile=$CONFIG_PROFILES"}
