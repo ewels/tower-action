@@ -49,6 +49,7 @@ jobs:
         with:
           workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}
           access_token: ${{ secrets.TOWER_ACCESS_TOKEN }}
+          api_endpoint: ${{ secrets.TOWER_API_ENDPOINT }}
           compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
           pipeline: YOUR_USERNAME/REPO
           revision: v1.2.1
