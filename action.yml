@@ -8,8 +8,10 @@ branding:
   color: 'purple'
 
 inputs:
+  # I'd like to rename this to access_token for consistency after it was renamed by Tower
+  # but need to keep it like this for backwards compatibility in existing pipelines
   bearer_token:
-    description: Nextflow Tower bearer token
+    description: Nextflow Tower access token
     required: true
   compute_env:
     description: Nextflow Tower compute env
@@ -42,7 +44,7 @@ runs:
   image: Dockerfile
   env:
     TOWER_WORKSPACE_ID: ${{ inputs.workspace_id }}
-    TOWER_BEARER_TOKEN: ${{ inputs.bearer_token }}
+    TOWER_ACCESS_TOKEN: ${{ inputs.bearer_token }}
     TOWER_COMPUTE_ENV: ${{ inputs.compute_env }}
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}
