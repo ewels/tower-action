@@ -8,16 +8,17 @@ branding:
   color: 'purple'
 
 inputs:
-  # I'd like to rename this to access_token for consistency after it was renamed by Tower
-  # but need to keep it like this for backwards compatibility in existing pipelines
-  bearer_token:
+  access_token:
     description: Nextflow Tower access token
     required: true
   compute_env:
     description: Nextflow Tower compute env
-    required: true
+    required: false
   workspace_id:
     description: Nextflow Tower workspace ID
+    required: false
+  api_endpoint:
+    description: Tower API URL
     required: false
   pipeline:
     description: Pipeline repository
@@ -32,11 +33,9 @@ inputs:
     required: true
   parameters:
     description: Pipeline parameters
-    default: '{}'
     required: false
   profiles:
     description: Nextflow config profiles
-    default: '[]'
     required: false
 
 runs:
@@ -44,7 +43,8 @@ runs:
   image: Dockerfile
   env:
     TOWER_WORKSPACE_ID: ${{ inputs.workspace_id }}
-    TOWER_ACCESS_TOKEN: ${{ inputs.bearer_token }}
+    TOWER_API_ENDPOINT: ${{ inputs.api_endpoint }}
+    TOWER_ACCESS_TOKEN: ${{ inputs.access_token }}
     TOWER_COMPUTE_ENV: ${{ inputs.compute_env }}
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}

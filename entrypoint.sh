@@ -3,11 +3,13 @@
 # Health check - print basic settings
 tw info
 
+# Print the params input to a file
+echo $PARAMETERS > params.json
+
 # Launch the pipeline
 tw launch $PIPELINE \
-    --work-dir=$WORKDIR
-    --params=$PARAMETERS \
-    ${TOWER_WORKSPACE_ID:+"--workspace=$TOWER_WORKSPACE_ID"} \
+    --params=params.json \
+    ${$WORKDIR:+"--work-dir=$WORKDIR"} \
     ${TOWER_COMPUTE_ENV:+"--compute-env=$TOWER_COMPUTE_ENV"} \
     ${REVISION:+"--revision=$REVISION"} \
     ${CONFIG_PROFILES:+"--profile=$CONFIG_PROFILES"}
