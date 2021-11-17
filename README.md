@@ -135,7 +135,6 @@ The location that temporary working files should be stored. Must be accessible i
 Additional pipeline parameters.
 
 These should be supplied as a valid JSON object, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
-You may use YAML instead of JSON, but GitHub actions can mess with newlines, so JSON is safer.
 
 ### `profiles`
 

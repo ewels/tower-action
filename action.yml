@@ -50,4 +50,4 @@ runs:
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
     PARAMETERS: ${{ toJson(fromJson(inputs.parameters)) }}
-    CONFIG_PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}
+    CONFIG_PROFILES: ${{ inputs.profiles }}
