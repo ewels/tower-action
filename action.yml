@@ -20,6 +20,7 @@ inputs:
   api_endpoint:
     description: Tower API URL
     required: false
+    default: https://api.tower.nf
   pipeline:
     description: Pipeline repository
     default: ${{ github.repository }}
