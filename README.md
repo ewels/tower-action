@@ -85,7 +85,7 @@ See the [Nextflow Tower documentation for more details](https://help.tower.nf/ge
 
 Nextflow Tower organisations can have multiple _Workspaces_. Use this field to choose a specific workspace.
 
-If not set, the pipeline will launch on your personal user's workspace.
+Default: Your personal user's workspace.
 
 Your Workspace ID can be found in the organisation's _Workspaces_ tab:
 
@@ -95,9 +95,7 @@ Default: Your primary workspace.
 
 ### `compute_env`
 
-**[Optional]** Nextflow Tower compute environment ID.
-
-![workspace ID](img/compute_id.png)
+**[Optional]** Nextflow Tower compute environment name (not ID).
 
 Default: Your primary compute environment.
 
