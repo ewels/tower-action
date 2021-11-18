@@ -8,15 +8,19 @@ branding:
   color: 'purple'
 
 inputs:
-  bearer_token:
-    description: Nextflow Tower bearer token
+  access_token:
+    description: Nextflow Tower access token
     required: true
   compute_env:
     description: Nextflow Tower compute env
-    required: true
+    required: false
   workspace_id:
     description: Nextflow Tower workspace ID
     required: false
+  api_endpoint:
+    description: Tower API URL
+    required: false
+    default: https://api.tower.nf
   pipeline:
     description: Pipeline repository
     default: ${{ github.repository }}
@@ -30,11 +34,9 @@ inputs:
     required: true
   parameters:
     description: Pipeline parameters
-    default: '{}'
     required: false
   profiles:
     description: Nextflow config profiles
-    default: '[]'
     required: false
 
 runs:
@@ -42,10 +44,11 @@ runs:
   image: Dockerfile
   env:
     TOWER_WORKSPACE_ID: ${{ inputs.workspace_id }}
-    TOWER_BEARER_TOKEN: ${{ inputs.bearer_token }}
+    TOWER_API_ENDPOINT: ${{ inputs.api_endpoint }}
+    TOWER_ACCESS_TOKEN: ${{ inputs.access_token }}
     TOWER_COMPUTE_ENV: ${{ inputs.compute_env }}
     PIPELINE: ${{ inputs.pipeline }}
     REVISION: ${{ inputs.revision }}
     WORKDIR: ${{ inputs.workdir }}
     PARAMETERS: ${{ toJson(fromJson(inputs.parameters)) }}
-    CONFIG_PROFILES: ${{ toJson(fromJson(inputs.profiles)) }}
+    CONFIG_PROFILES: ${{ inputs.profiles }}

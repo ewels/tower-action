@@ -20,9 +20,7 @@ jobs:
       - uses: nf-core/tower-action@master
         # Use repository secrets for sensitive fields
         with:
-          bearer_token: ${{ secrets.TOWER_BEARER_TOKEN }}
-          compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
-          workdir: ${{ secrets.AWS_S3_BUCKET }}
+          access_token: ${{ secrets.TOWER_ACCESS_TOKEN }}
 ```
 
 ### Complete example
@@ -50,7 +48,8 @@ jobs:
         # Use repository secrets for sensitive fields
         with:
           workspace_id: ${{ secrets.TOWER_WORKSPACE_ID }}
-          bearer_token: ${{ secrets.TOWER_BEARER_TOKEN }}
+          access_token: ${{ secrets.TOWER_ACCESS_TOKEN }}
+          api_endpoint: ${{ secrets.TOWER_API_ENDPOINT }}
           compute_env: ${{ secrets.TOWER_COMPUTE_ENV }}
           pipeline: YOUR_USERNAME/REPO
           revision: v1.2.1
@@ -60,15 +59,15 @@ jobs:
             {
                 "outdir": "${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}"
             }
-          # List of config profiles to use - JSON array as a string
-          profiles: '[ "test", "aws_tower" ]'
+          # List of config profiles to use - comma separated list as a string
+          profiles: 'test,aws_tower'
 ```
 
 ## Inputs
 
 Please note that a number of these inputs are sensitive and should be kept secure. We recommend saving them as appropriate using GitHub repository [encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets). They can then be accessed with `${{ secrets.SECRET_NAME }}` in your GitHub actions workflow.
 
-### `bearer_token`
+### `access_token`
 
 **[Required]** Nextflow Tower personal access token.
 
@@ -86,17 +85,25 @@ See the [Nextflow Tower documentation for more details](https://help.tower.nf/ge
 
 Nextflow Tower organisations can have multiple _Workspaces_. Use this field to choose a specific workspace.
 
-If not set, the pipeline will launch on your personal user's workspace.
+Default: Your personal user's workspace.
 
 Your Workspace ID can be found in the organisation's _Workspaces_ tab:
 
 ![workspace ID](img/workspace_id.png)
 
+Default: Your primary workspace.
+
 ### `compute_env`
 
-**[Required]** Nextflow Tower compute environment ID.
+**[Optional]** Nextflow Tower compute environment name (not ID).
 
-![workspace ID](img/compute_id.png)
+Default: Your primary compute environment.
+
+### `api_endpoint`
+
+**[Optional]** Nextflow Tower API URL endpoint.
+
+Default: `api.tower.nf`
 
 ### `pipeline`
 
@@ -124,10 +131,9 @@ The location that temporary working files should be stored. Must be accessible i
 
 **[Optional]** Pipeline parameters.
 
-Additional pipeline parameters (eg. `--myparam` or `params.myparam`).
-These should be supplied as a valid JSON object, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
+Additional pipeline parameters.
 
-Default: An empty JSON object (`{}`).
+These should be supplied as a valid JSON object, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
 
 ### `profiles`
 
