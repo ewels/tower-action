@@ -2,6 +2,8 @@
 
 **A GitHub Action to launch a workflow using [Nextflow Tower](https://tower.nf) - <https://tower.nf>.**
 
+This action uses the [Nextflow Tower CLI](https://github.com/seqeralabs/tower-cli/).
+
 ## Example usage
 
 ### Minimal example
@@ -27,7 +29,9 @@ jobs:
 
 This example never runs automatically, but creates a button under the GitHub repository _Actions_ tab that can be used to manually trigger the workflow.
 
-It runs on a specified organisation workspace, calls an external pipeline to be run at a pinned versiont tag. The `--outdir` parameter is used to save results to a separate directory in the AWS bucket and the pipeline uses two config profiles.
+It runs on a specified installation of Tower, with a specific organisation workspace. It also calls an external pipeline to be run at a pinned version tag.
+
+The `--outdir` parameter is used to save results to a separate directory in the AWS bucket and the pipeline uses two config profiles.
 
 ```yaml
 name: Launch on Tower
@@ -59,13 +63,15 @@ jobs:
             {
                 "outdir": "${{ secrets.AWS_S3_BUCKET }}/results/${{ github.sha }}"
             }
-          # List of config profiles to use - comma separated list as a string
-          profiles: 'test,aws_tower'
+          # List of pipeline config profiles to use - comma separated list as a string
+          profiles: test,aws_tower
 ```
 
 ## Inputs
 
 Please note that a number of these inputs are sensitive and should be kept secure. We recommend saving them as appropriate using GitHub repository [encrypted secrets](https://docs.github.com/en/actions/reference/encrypted-secrets). They can then be accessed with `${{ secrets.SECRET_NAME }}` in your GitHub actions workflow.
+
+Note that if you are using secrets, these will be screened in the GitHub Actions log and appear as `***`.
 
 ### `access_token`
 
@@ -95,7 +101,7 @@ Default: Your primary workspace.
 
 ### `compute_env`
 
-**[Optional]** Nextflow Tower compute environment name (not ID).
+**[Optional]** Nextflow Tower compute environment name _(not ID)_.
 
 Default: Your primary compute environment.
 
@@ -109,7 +115,8 @@ Default: `api.tower.nf`
 
 **[Optional]** Pipeline repository name.
 
-For example, `nf-core/rnaseq` or `https://github.com/nf-core/sarek`
+For example, `nf-core/rnaseq` or `https://github.com/nf-core/sarek`.
+Can also be the name of a preconfigured pipeline in Nextflow Tower.
 
 Default: The current GitHub repository (`github.repository`).
 
@@ -135,13 +142,13 @@ Additional pipeline parameters.
 
 These should be supplied as a valid JSON object, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
 
+> JSON is required (not YAML) because we do some parsing and dumping to ensure that the action handles multi-line string formatting correctly.
+
 ### `profiles`
 
 **[Optional]** Nextflow config profiles.
 
-Pipeline config profiles to use (eg. `-profile test`). Should be a JSON array of strings, quoted as a string in your GitHub Actions workflow. See example usage above for an example.
-
-Default: An empty JSON array (`[]`).
+Pipeline config profiles to use. Should be comma separated without spaces.
 
 ## Credits
 
