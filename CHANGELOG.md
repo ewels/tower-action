@@ -1,6 +1,6 @@
 # nf-core/tower-action: Changelog
 
-## [[v2.0](https://github.com/nf-core/tower-action/releases/tag/v2.0)] - 2021-11-18
+## [[v2.0](https://github.com/nf-core/tower-action/releases/tag/v2.0)] - 2021-11-19
 
 A complete rewrite of the action to use the new [Nextflow Tower CLI](https://github.com/seqeralabs/tower-cli)
 instead of calling the API directly with `curl`.
