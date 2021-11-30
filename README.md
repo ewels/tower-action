@@ -159,16 +159,11 @@ Pre-run script executed before pipeline launch. This would be particularly usefu
 ```yaml
 jobs:
   run-tower:
-    name: Launch on Nextflow Tower
-    # Don't try to run on forked repos
-    if: github.repository == 'YOUR_USERNAME/REPO'
-    runs-on: ubuntu-latest
     steps:
       - uses: nf-core/tower-action@v2
         with:
-          <TRUNCATED>
           pre_run_script: 'export NXF_VER=21.10.3'
-          <TRUNCATED>
+          # Truncated..
 ```
 
 ## Credits
