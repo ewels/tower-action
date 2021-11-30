@@ -12,4 +12,5 @@ tw launch $PIPELINE \
     ${WORKDIR:+"--work-dir=$WORKDIR"} \
     ${TOWER_COMPUTE_ENV:+"--compute-env=$TOWER_COMPUTE_ENV"} \
     ${REVISION:+"--revision=$REVISION"} \
-    ${CONFIG_PROFILES:+"--profile=$CONFIG_PROFILES"}
+    ${CONFIG_PROFILES:+"--profile=$CONFIG_PROFILES"} \
+    ${PRE_RUN_SCRIPT:+"--pre-run=$PRE_RUN_SCRIPT"}

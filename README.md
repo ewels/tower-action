@@ -150,6 +150,22 @@ These should be supplied as a valid JSON object, quoted as a string in your GitH
 
 Pipeline config profiles to use. Should be comma separated without spaces.
 
+### `pre_run_script`
+
+**[Optional]** Pre-run script before launch.
+
+Pre-run script executed before pipeline launch. This would be particularly useful if you wanted to use a different version of Nextflow than the default available in Tower. You can set this in the pipeline Github Actions:
+
+```yaml
+jobs:
+  run-tower:
+    steps:
+      - uses: nf-core/tower-action@v2
+        with:
+          pre_run_script: 'export NXF_VER=21.10.3'
+          # Truncated..
+```
+
 ## Credits
 
 This GitHub Action was written by Phil Ewels ([@ewels](https://github.com/ewels)), with help from and based on earlier work by Gisela Gabernet ([@ggabernet](https://github.com/ggabernet)).
