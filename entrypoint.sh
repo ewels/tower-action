@@ -4,10 +4,10 @@
 tw info
 
 # Print the params input to a file
-echo $PARAMETERS > params.json
+echo -e $PARAMETERS > params.json
 
 # Print the pre-run script to a file
-echo $PRE_RUN_SCRIPT > pre_run.sh
+echo -e $PRE_RUN_SCRIPT > pre_run.sh
 
 # Launch the pipeline
 tw launch $PIPELINE \
