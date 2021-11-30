@@ -150,6 +150,12 @@ These should be supplied as a valid JSON object, quoted as a string in your GitH
 
 Pipeline config profiles to use. Should be comma separated without spaces.
 
+### `pre_run_script`
+
+**[Optional]** Pre-run script before launch.
+
+Pre-run script executed before pipeline launch.
+
 ## Credits
 
 This GitHub Action was written by Phil Ewels ([@ewels](https://github.com/ewels)), with help from and based on earlier work by Gisela Gabernet ([@ggabernet](https://github.com/ggabernet)).
