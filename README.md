@@ -154,7 +154,22 @@ Pipeline config profiles to use. Should be comma separated without spaces.
 
 **[Optional]** Pre-run script before launch.
 
-Pre-run script executed before pipeline launch.
+Pre-run script executed before pipeline launch. This would be particularly useful if you wanted to use a different version of Nextflow than the default available in Tower. You can set this in the pipeline Github Actions:
+
+```yaml
+jobs:
+  run-tower:
+    name: Launch on Nextflow Tower
+    # Don't try to run on forked repos
+    if: github.repository == 'YOUR_USERNAME/REPO'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: nf-core/tower-action@v2
+        with:
+          <TRUNCATED>
+          pre_run_script: 'export NXF_VER=21.10.3'
+          <TRUNCATED>
+```
 
 ## Credits
 
