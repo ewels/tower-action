@@ -1,5 +1,9 @@
 # nf-core/tower-action: Changelog
 
+## [[v2.2](https://github.com/nf-core/tower-action/releases/tag/v2.2)] - 2022-01-10
+
+Add option to pass nextflow config to Tower CLI.
+
 ## [[v2.1](https://github.com/nf-core/tower-action/releases/tag/v2.1)] - 2021-11-30
 
 Add option to pass pre-run script to Tower CLI.
