@@ -162,7 +162,9 @@ jobs:
     steps:
       - uses: nf-core/tower-action@v2
         with:
-          nextflow_config: 'process.errorStrategy = 'retry'\nprocess.maxRetries = 3'
+          nextflow_config: |
+            process.errorStrategy = 'retry'
+            process.maxRetries = 3
           # Truncated..
 ```
 
