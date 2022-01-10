@@ -150,6 +150,24 @@ These should be supplied as a valid JSON object, quoted as a string in your GitH
 
 Pipeline config profiles to use. Should be comma separated without spaces.
 
+### `nextflow_config`
+
+**[Optional]** Nextflow config options.
+
+Useful to pass custom Nextflow config options to the `tw launch` command e.g.
+
+```yaml
+jobs:
+  run-tower:
+    steps:
+      - uses: nf-core/tower-action@v2
+        with:
+          nextflow_config: |
+            process.errorStrategy = 'retry'
+            process.maxRetries = 3
+          # Truncated..
+```
+
 ### `pre_run_script`
 
 **[Optional]** Pre-run script before launch.

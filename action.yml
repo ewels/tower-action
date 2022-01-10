@@ -38,6 +38,9 @@ inputs:
   profiles:
     description: Nextflow config profiles
     required: false
+  nextflow_config:
+    description: Nextflow config options
+    required: false
   pre_run_script:
     description: Pre-run script before launch
     required: false
@@ -55,4 +58,5 @@ runs:
     WORKDIR: ${{ inputs.workdir }}
     PARAMETERS: ${{ toJson(fromJson(inputs.parameters)) }}
     CONFIG_PROFILES: ${{ inputs.profiles }}
+    NEXTFLOW_CONFIG: ${{ inputs.nextflow_config }}
     PRE_RUN_SCRIPT: ${{ inputs.pre_run_script }}
