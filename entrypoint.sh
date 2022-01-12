@@ -4,13 +4,13 @@
 tw info
 
 # Print the params input to a file
-echo -e $PARAMETERS > params.json
+echo -e "$PARAMETERS" > params.json
 
 # Print the pre-run script to a file
-echo -e $PRE_RUN_SCRIPT > pre_run.sh
+echo -e "$PRE_RUN_SCRIPT" > pre_run.sh
 
 # Print the nextflow config  to a file
-echo -e $NEXTFLOW_CONFIG > nextflow.config
+echo -e "$NEXTFLOW_CONFIG" > nextflow.config
 
 # Launch the pipeline
 tw \
