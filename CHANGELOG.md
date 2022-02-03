@@ -1,5 +1,9 @@
 # nf-core/tower-action: Changelog
 
+## [[v2.3](https://github.com/nf-core/tower-action/releases/tag/v2.2)] - 2022-02-03
+
+Bump Tower CLI to version 0.5
+
 ## [[v2.2](https://github.com/nf-core/tower-action/releases/tag/v2.2)] - 2022-01-12
 
 Add option to pass nextflow config to Tower CLI.
