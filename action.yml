@@ -23,7 +23,7 @@ inputs:
     default: https://api.tower.nf
   pipeline:
     description: Pipeline repository
-    default: ${{ github.repository }}
+    default: https://github.com/${{ github.repository }}
     required: false
   revision:
     description: Pipeline revision (release / branch)
