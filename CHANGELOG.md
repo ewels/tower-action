@@ -1,5 +1,20 @@
 # nf-core/tower-action: Changelog
 
+## [[v3.0](https://github.com/nf-core/tower-action/releases/tag/v3.0)]
+
+### :warning: BREAKING CHANGE :warning
+
+The new version 0.5 of the Tower CLI only supports full URLs and no longer works with short-form
+GitHub repository names (`user/repo`). The full GitHub repository URL now needs to be used
+(`https://github.com/user/repo`).
+
+If you are setting `pipeline` in your workflow, please update it accordingly.
+Note that the default value is the current repo, so in most cases this value
+does not need to be specified.
+
+* Bump Tower CLI to version 0.5
+* Prefix the default value for `pipeline` with `https://github.com/` to match changed behaviour in the Tower CLI
+
 ## [[v2.2](https://github.com/nf-core/tower-action/releases/tag/v2.2)] - 2022-01-12
 
 Add option to pass nextflow config to Tower CLI.

@@ -113,12 +113,12 @@ Default: `api.tower.nf`
 
 ### `pipeline`
 
-**[Optional]** Pipeline repository name.
+**[Optional]** Workspace pipeline name or full pipeline URL.
 
-For example, `nf-core/rnaseq` or `https://github.com/nf-core/sarek`.
+For example, `https://github.com/nf-core/sarek`.
 Can also be the name of a preconfigured pipeline in Nextflow Tower.
 
-Default: The current GitHub repository (`github.repository`).
+Default: The current GitHub repository (`https://github.com/${{github.repository}}`).
 
 ### `revision`
 
