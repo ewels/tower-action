@@ -16,7 +16,7 @@ echo -e "$NEXTFLOW_CONFIG" > nextflow.config
 tw \
     launch \
     $PIPELINE \
-    --params=params.json \
+    --params-file=params.json \
     ${WORKDIR:+"--work-dir=$WORKDIR"} \
     ${TOWER_COMPUTE_ENV:+"--compute-env=$TOWER_COMPUTE_ENV"} \
     ${REVISION:+"--revision=$REVISION"} \
