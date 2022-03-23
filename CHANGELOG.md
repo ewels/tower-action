@@ -1,5 +1,9 @@
 # nf-core/tower-action: Changelog
 
+## [[v3.0.1](https://github.com/nf-core/tower-action/releases/tag/v3.0.1)] - 2022-03-23
+
+* Bugfix: should be `--params-file` and not `--params`
+
 ## [[v3.0](https://github.com/nf-core/tower-action/releases/tag/v3.0)] - 2022-03-23
 
 ### :warning: BREAKING CHANGE :warning:
