@@ -3,6 +3,7 @@
 ## v3.2.0
 
 * Bumped tower-cli version `0.6.2` -> `0.6.4`
+* Save the verbose log to a file, available as a GitHub Actions artefact download
 
 ## [[v3.1.0](https://github.com/nf-core/tower-action/releases/tag/v3.1.0)] - 2022-06-26
 
