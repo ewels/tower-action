@@ -23,6 +23,10 @@ jobs:
         # Use repository secrets for sensitive fields
         with:
           access_token: ${{ secrets.TOWER_ACCESS_TOKEN }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Tower debug log file
+          path: tower_action_*.log
 ```
 
 ### Complete example
@@ -65,6 +69,10 @@ jobs:
             }
           # List of pipeline config profiles to use - comma separated list as a string
           profiles: test,aws_tower
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Tower debug log file
+          path: tower_action_*.log
 ```
 
 ## Inputs
@@ -183,6 +191,10 @@ jobs:
           pre_run_script: 'export NXF_VER=21.10.3'
           # Truncated..
 ```
+
+## Outputs
+
+The action prints normal stdout info-level log messages to the actions console. However, it saves a verbose log file to `tower_action_*.log` (the `*` is a timestamp). We recommend using [`actions/upload-artifact`](https://github.com/actions/upload-artifact) in your GitHub Actions workflow as shown in the examples above, this will then expose this file as a download through the workflow summary page.
 
 ## Credits
 
