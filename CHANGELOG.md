@@ -1,5 +1,9 @@
 # nf-core/tower-action: Changelog
 
+## [[v3.2.1](https://github.com/nf-core/tower-action/releases/tag/v3.2.1)] - 2022-09-06
+
+* Patch release to strip Tower authentication tokens from the log file 😬
+
 ## [[v3.2.0](https://github.com/nf-core/tower-action/releases/tag/v3.2.0)] - 2022-09-06
 
 * Bumped tower-cli version `0.6.2` -> `0.6.4`
