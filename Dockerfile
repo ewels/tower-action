@@ -1,6 +1,6 @@
 FROM alpine
 
-ARG TOWER_CLI_VERSION="0.6.5"
+ARG TOWER_CLI_VERSION="0.7.3"
 
 # Install Tower CLI
 RUN apk add --no-cache curl ca-certificates
