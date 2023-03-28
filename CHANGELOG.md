@@ -1,5 +1,9 @@
 # nf-core/tower-action: Changelog
 
+## [[v3.2.3](https://github.com/nf-core/tower-action/releases/tag/v3.2.3)] - 2023-03-28
+
+* Bumped tower-cli version `0.6.5` -> `0.7.3`
+
 ## [[v3.2.2](https://github.com/nf-core/tower-action/releases/tag/v3.2.2)] - 2022-09-20
 
 * Bumped tower-cli version `0.6.4` -> `0.6.5`
